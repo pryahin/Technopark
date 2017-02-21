@@ -1,0 +1,23 @@
+.header {
+	background: #353535;
+	width: 1920px;
+	height: 60px;
+}
+
+.logo{
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 145px;
+	margin-top: 5px;
+	color: White;
+}
+
+.search{
+	margin-left: 365px;
+	margin-top: -45px;
+}
+
+.user{
+	margin-left: 700px;
+	margin-top: -54px;
+}
