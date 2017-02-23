@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>Главная страница</title>
+      <link rel="stylesheet" type="text/css" href="../static/bootstrap-4.0.0-alpha.6-dist/css/bootstrap.min.css"">
+      <link rel="stylesheet" type="text/css" href="../static/css/style.css" />
+   </head>
+   <body>
+      <div class="header">
+         <div class="logo">
+            <a href="index.html">
+               <img src="../static/img/ap_logo.png" class="logo-img d-inline-block">
+               <h1 class="logo-title">AskPupkin</h1>
+            </a>
+         </div>
+         <div class="search">
+            <form class="form-inline" action="/search">
+               <input type="text" class="form-control" name="q" placeholder="Найти...">
+               <button type="submit" class="btn btn-secondary">Найти</button>
+            </form>
+         </div>
+         <div class="user">
+            <img src="../static/img/default_avatar.png" class="rounded-circle header-avatar">
+            <div class="user-block">
+               <div class="user-name">Username</div>
+               <div class="user-options">
+                  <a href="settings.html">Настройки</a>
+                  <a href="base_out.html">Выйти</a>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="content">
+         <div class="left">
+            <h3>Новые вопросы:</h3>
+            <div class="question">
+               <div class="question-avatar">
+                  <img src="../static/img/default_avatar.png" class="rounded-circle question-avatar-img">
+               </div>
+               <div class="question-like">5 <a href="#"><img src="../static/img/like-black.png" class="like-img"></a></div>
+               <div class="question-title bot">
+                  <a href="question.html">Заголовок вопроса</a>   
+               </div>
+               <div class="question-preview">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam rutrum sapien vitae elit porta, eu posuere dui hendrerit. Nullam bibendum lorem sit amet nunc dictum, at elementum elit tincidunt. Etiam non dolor turpis. Donec facilisis vel nisl nec placerat. Aliquam varius scelerisque nisl, id accumsan magna condimentum sed. Morbi ut rhoncus neque. Sed et ornare leo.</div>
+               <div class="question-answers"><a href="question.html">Ответов: 3</a></div>
+               <div class="question-tags">Теги: 
+                  <a href="/tags/Tag1">Tag1</a>
+                  <a href="/tags/Tag2">Tag2</a>
+                  <a href="/tags/Tag3">Tag3</a>
+               </div>
+               <div class="clearfix"></div>
+            </div>
+            <div class="question">
+               <div class="question-avatar">
+                  <img src="../static/img/default_avatar.png" class="rounded-circle question-avatar-img">
+               </div>
+               <div class="question-like">5 <a href="#"><img src="../static/img/like-black.png" class="like-img"></a></div>
+               <div class="question-title bot">
+                  <a href="question.html">Заголовок вопроса</a>   
+               </div>
+               <div class="question-preview">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam rutrum sapien vitae elit porta, eu posuere dui hendrerit. Nullam bibendum lorem sit amet nunc dictum, at elementum elit tincidunt. Etiam non dolor turpis. Donec facilisis vel nisl nec placerat. Aliquam varius scelerisque nisl, id accumsan magna condimentum sed. Morbi ut rhoncus neque. Sed et ornare leo.</div>
+               <div class="question-answers"><a href="question.html">Ответов: 3</a></div>
+               <div class="question-tags">Теги: 
+                  <a href="/tags/Tag1">Tag1</a>
+                  <a href="/tags/Tag2">Tag2</a>
+                  <a href="/tags/Tag3">Tag3</a>
+               </div>
+               <div class="clearfix"></div>
+            </div>
+            <div class="question">
+               <div class="question-avatar">
+                  <img src="../static/img/default_avatar.png" class="rounded-circle question-avatar-img">
+               </div>
+               <div class="question-like">5 <a href="#"><img src="../static/img/like-black.png" class="like-img"></a></div>
+               <div class="question-title bot">
+                  <a href="question.html">Заголовок вопроса</a>   
+               </div>
+               <div class="question-preview">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam rutrum sapien vitae elit porta, eu posuere dui hendrerit. Nullam bibendum lorem sit amet nunc dictum, at elementum elit tincidunt. Etiam non dolor turpis. Donec facilisis vel nisl nec placerat. Aliquam varius scelerisque nisl, id accumsan magna condimentum sed. Morbi ut rhoncus neque. Sed et ornare leo.</div>
+               <div class="question-answers"><a href="question.html">Ответов: 3</a></div>
+               <div class="question-tags">Теги: 
+                  <a href="/tags/Tag1">Tag1</a>
+                  <a href="/tags/Tag2">Tag2</a>
+                  <a href="/tags/Tag3">Tag3</a>
+               </div>
+               <div class="clearfix"></div>
+            </div>
+            <ul class="pagination justify-content-center">
+               <li class="page-item">
+                  <a class="page-link" href="#" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                  <span class="sr-only">Previous</span>
+                  </a>
+               </li>
+               <li class="page-item active"><a class="page-link" href="#">1</a></li>
+               <li class="page-item"><a class="page-link" href="#">2</a></li>
+               <li class="page-item"><a class="page-link" href="#">3</a></li>
+               <li class="page-item"><a class="page-link" href="#">4</a></li>
+               <li class="page-item"><a class="page-link" href="#">5</a></li>
+               <li class="page-item">
+                  <a class="page-link" href="#" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                  <span class="sr-only">Next</span>
+                  </a>
+               </li>
+            </ul>
+         </div>
+         <div class="right">
+            <div class="tags">
+               <fieldset>
+                  <legend class="bot">Поплуярные теги</legend>
+                  <a href="/tags/Tag1">Tag1</a>
+                  <a href="/tags/Tag2">Tag2</a>
+                  <a href="/tags/Tag3">Tag3</a>
+               </fieldset>
+            </div>
+            <div class="best-members">
+               <legend>Лучшие пользователи</legend>
+               <table class="table">
+                  <tbody>
+                     <tr><td><a href="/users/Username">Username</a></td></tr>
+                     <tr><td><a href="/users/User2">User2</a></td></tr>
+                     <tr><td><a href="/users/User3">User3</a></td></tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <div class="clearfix"></div>
+      </div>
+      <div class="footer">
+         <p>© Company 2017</p>
+      </div>
+   </body>
+</html>
