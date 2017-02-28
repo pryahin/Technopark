@@ -202,10 +202,11 @@ button{
 }
 
 .answer{
-	min-height: 110px;
+	min-height: 115px;
 	width: 100%;
 	border: 1px solid #000;
-	margin-bottom: 10px;
+	margin-bottom: 15px;
+	margin-top: 15px;
 }
 
 .answer-avatar{
@@ -221,13 +222,15 @@ button{
 
 .answer-like{
 	width: 70px;
+	height: 30px;
 	margin-left: 30px;
+	margin-bottom: 10px;
 }
 
 .answer-preview{
 	font-size: 10pt;
 	margin-left: 110px;
-	margin-top: -90px;
+	margin-top: -110px;
 }
 
 .answer-correct:before{
@@ -241,6 +244,12 @@ button{
 }
 
 .answer-correct{
+	font-weight: bold;
+	color: green;
+	margin: 15px 0 10px 110px;
+}
+
+.answer-vote{
 	font-weight: bold;
 	color: green;
 	margin: 15px 0 10px 110px;
