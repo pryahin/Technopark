@@ -1,0 +1,43 @@
+{% extends "base.html"%}
+
+{% block title %} Вопрос {% endblock %}
+
+{% block content%}
+{% load static %}
+<h3 class="bot">{{ question.title }}</h3>
+            <div class="question">
+               <div class="page-question-avatar">
+                  <img src="{% static 'img/default_avatar.png' %}" class="rounded-circle question-avatar-img">
+               </div>
+               <div class="page-question-like">{{ question.likes }} <a href="#"><img src="{% static 'img/like-black.png' %}" class="page-like-img"></a></div>
+               <div class="page-question-preview">{{ question.text }}</div>
+               <div class="page-question-tags">Теги: 
+               {% for tag in question.tags %}
+                  <a href="{% url 'questions_by_tag' tag %}"> {{ tag }} </a>
+               {% endfor %}
+               </div>
+               <div class="clearfix"></div>
+            </div>
+            <h3 class="bot">Ответы:</h3>
+            {% for answer in question.answers %}
+            <div class="answer">
+               <div class="answer-avatar">
+                  <img src="{% static 'img/default_avatar.png' %}" class="rounded-circle answer-avatar-img">
+               </div>
+               <div class="answer-like">{{ answer.likes }} <a href="#"><img src="{% static 'img/like-black.png' %}" class="like-img"></a></div>
+               <div class="answer-preview">{{ answer.text }}</div>
+               {% if question.isVote %}
+                  <button type="button" class="btn btn-outline-success answer-vote">✓ Это лучший ответ</button>
+               {% else %}
+                  {% if answer.isCorrect %}
+                     <div class="answer-correct"> Лучший ответ!</div>
+                  {% endif %}
+               {% endif %}
+            </div>
+            {% endfor %}
+            <h3 class="bot">Ответить:</h3>
+            <form class="form-answer">
+               <textarea class="form-control" rows="3" placeholder="Введите свой ответ здесь..."></textarea>
+               <button type="submit" class="btn btn-black">Ответить</button>
+            </form>
+{% endblock %}
