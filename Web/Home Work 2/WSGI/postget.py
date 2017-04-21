@@ -24,6 +24,5 @@ def application(environ, start_response):
                     output.append(bytes("%s = %s <br>" % (key, value), encoding="UTF-8"))
 
     output_len = sum(len(line) for line in output)
-    start_response('200 OK', [('Content-type', 'text/html'),
-                              ('Content-Length', str(output_len))])
+    start_response('200 OK', [('Content-type', 'text/html'), ('Content-Length', str(output_len))])
     return output

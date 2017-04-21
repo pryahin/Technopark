@@ -15,7 +15,7 @@ button{
 	background: #353535;
 	width: 100%;
 	height: 60px;
-	min-width: 950px;
+	min-width: 990px;
 }
 
 .logo{
@@ -59,12 +59,12 @@ button{
 
 .user-block{
 	margin-top: -50px;
-	margin-left: 60px
+	margin-left: 60px;
 }
 
 .user-name{
 	color: White;
-	font-style: italic ;
+	font-style: italic;
 	font-weight: bold;
 
 }
@@ -78,7 +78,7 @@ button{
 }
 
 .content, .footer{
-	min-width: 665px;
+	min-width: 990px;
 	width: 70%;
 	margin: auto;
 	margin-top: 20px;
@@ -110,6 +110,7 @@ button{
 	padding: 10px;
 	width: 100%;
 	border: 1px solid #000;
+	min-height: 125px;
 }
 
 .question-avatar{
@@ -124,7 +125,7 @@ button{
 }
 
 .question-like{
-	width: : 70px;
+	width: 70px;
 	margin-left: 35px;
 }
 
@@ -167,20 +168,20 @@ button{
 .page-question-avatar{
 	height: 100px;
 	width: 100px;
-	margin: 30px 0px 0px 10px;
 	float: left;
 }
 
 .page-question-like{
-	width: : 70px;
-	margin-top: 140px;
-	margin-left: -75px;
+	width: 100px;
+	margin-top: 110px;
+	margin-left: -100px;
 	float: left;
+	text-align: center;
 }
 
 .page-like-img{
-	width: 30px;
-	height: 30px;
+	width: 20px;
+	height: 20px;
 }
 
 
@@ -225,6 +226,7 @@ button{
 	height: 30px;
 	margin-left: 30px;
 	margin-bottom: 10px;
+	text-align: center;
 }
 
 .answer-preview{

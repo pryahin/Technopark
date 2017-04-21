@@ -1,0 +1,29 @@
+{% extends "base.html"%}
+
+{% block title %} Вход {% endblock %}
+
+{% block content %}
+            <h3 class="bot">Вход</h3>
+            <form class="login-form">
+               <p class="text-danger">Неправильный логин или пароль!</p>
+               <div class="form-group row">
+                  <label for="login-input" class="col-2 col-form-label">Логин</label>
+                  <div class="col-10">
+                     <input class="form-control" type="text" id="login-input">
+                  </div>
+               </div>
+               <div class="form-group row">
+                  <label for="password-input" class="col-2 col-form-label">Пароль</label>
+                  <div class="col-10">
+                     <input class="form-control" type="password" id="password-input">
+                  </div>
+               </div>
+               <div class="form-group row">
+                  <div class="col-2"></div>
+                  <div class="col-10">
+                     <button type="submit" class="btn btn-black">Войти</button>
+                  </div>
+               </div>
+            </form>
+            <a href="{% url 'signup' %}">Нет аккаунта? Регистрация</a>
+{% endblock %}

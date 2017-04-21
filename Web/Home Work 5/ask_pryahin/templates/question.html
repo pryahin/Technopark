@@ -1,0 +1,63 @@
+{% extends "base.html"%}
+
+{% block title %} Вопрос {% endblock %}
+
+{% block content%}
+{% load static %}
+<h3 class="bot">{{ question.title }}</h3>
+            <div class="question">
+               <div class="page-question-avatar">
+                  <img src="{{ question.author.profile.avatar.url }}" class="rounded-circle question-avatar-img">
+               </div>
+               <div class="page-question-like">
+                  <a href="#"><img src="{% static 'img/black-dislike.png' %}" class="page-like-img"></a>
+                  {{ question.rating }} 
+                  <a href="#"><img src="{% static 'img/like-black.png' %}" class="page-like-img"></a>
+               </div>
+               <div class="page-question-preview">{{ question.text }}</div>
+               <div class="page-question-tags">Теги: 
+               {% for tag in question.tags.all %}
+                  <a href="{% url 'questions_by_tag' tag %}"> {{ tag }} </a>
+               {% endfor %}
+               </div>
+               <div class="clearfix"></div>
+            </div>
+            {% if answers %}
+               <h3 class="bot">Ответы:</h3>
+            {% endif %}
+
+            {% for answer in answers %}
+            <a name="comment{{ answer.id }}"></a>
+            <div class="answer">
+               <div class="answer-avatar">
+                  <img src="{{ answer.author.profile.avatar.url }}" class="rounded-circle answer-avatar-img">
+               </div>
+               <div class="answer-like">
+                  <a href="#"><img src="{% static 'img/black-dislike.png' %}" class="like-img"></a>
+                  {{ answer.rating }} 
+                  <a href="#"><img src="{% static 'img/like-black.png' %}" class="like-img"></a>
+               </div>
+               <div class="answer-preview">{{ answer.text }}</div>
+               {% if question.isVote and question.author == request.user %}
+                  <button type="button" class="btn btn-outline-success answer-vote">✓ Это лучший ответ</button>
+               {% else %}
+                  {% if answer.is_correct %}
+                     <div class="answer-correct"> Лучший ответ!</div>
+                  {% endif %}
+               {% endif %}
+            </div>
+            {% endfor %}
+            <h3 class="bot">Ответить:</h3>
+            <form class="form-answer" method="POST">
+            {% csrf_token %}
+            {% for input in form.visible_fields %}
+               <div class="form-group {% if input.errors %} has-danger {% endif %}">
+                  {{input}}
+                  {% for error in input.errors %}
+                     <div class="form-control-feedback">{{ error }}</div>
+                  {% endfor %}
+               </div>
+            {% endfor %}
+               <button type="submit" class="btn btn-black">Ответить</button>
+            </form>
+{% endblock %}

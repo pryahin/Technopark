@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block title %} Вопрос {% endblock %}
+
+{% block content%}
+{% load static %}
+<h3 class="bot">{{ question.title }}</h3>
+            <div class="question">
+               <div class="page-question-avatar">
+                  <a href="/user/{{question.author.username}}"><img src="{{ question.author.profile.avatar.url }}" class="rounded-circle question-avatar-img"></a>
+               </div>
+               <div class="page-question-like">
+                  <a class="likebutton" value="-1" qid="{{ question.id }}" id="btndislike{{ question.id }}"><span class="page-like-img {% if islike == -1 %}is{% endif %}dislikebtn"/></a>
+                  <span id="qRating{{ question.id }}">{{ question.rating }}</span> 
+                  <a class="likebutton" value="1" qid="{{ question.id }}" id="btnlike{{ question.id }}"><span class="page-like-img {% if islike == 1 %}is{% endif %}likebtn"/></a>
+               </div>
+               <div class="page-question-preview">{{ question.text }}</div>
+               <div class="page-question-tags">Теги: 
+               {% for tag in question.tags.all %}
+                  <a href="{% url 'questions_by_tag' tag %}"> {{ tag }} </a>
+               {% endfor %}
+               </div>
+               <div class="clearfix"></div>
+            </div>
+
+            <div id="answers">
+            {% if answers %}
+               <h3 class="bot">Ответы:</h3>
+            {% endif %}
+            {% for answer in answers %}
+            <div class="answer">
+               <a name="comment{{ answer.id }}"></a>
+               <div class="answer-avatar">
+                  <a href="/user/{{answer.author.username}}"><img src="{{ answer.author.profile.avatar.url }}" class="rounded-circle answer-avatar-img"></a>
+               </div>
+               <div class="answer-like">
+                  <a class="anslikebutton" value="-1" aid="{{ answer.id }}" id="ansbtndislike{{ answer.id }}"><span class="like-img {% if answer.id in dislikes %}is{% endif %}dislikebtn"/></a>
+                  <span id="aRating{{ answer.id }}">{{ answer.rating }}</span> 
+                  <a class="anslikebutton" value="1" aid="{{ answer.id }}" id="ansbtnlike{{ answer.id }}"><span class="like-img {% if answer.id in likes %}is{% endif %}likebtn"/></a>
+               </div>
+               <div class="answer-preview">{{ answer.text }}</div>
+               {% if question.isVote and question.author == request.user %}
+                  <div id="ansid{{ answer.id }}"><button type="button" aid="{{ answer.id }}" class="btn btn-outline-success answer-vote">✓ Это лучший ответ</button></div>
+               {% else %}
+                  {% if answer.is_correct %}
+                     <div class="answer-correct"> Лучший ответ!</div>
+                  {% endif %}
+               {% endif %}
+            </div>
+            {% endfor %}
+            </div>
+            {% if request.user.is_authenticated %}
+            <h3 class="bot">Ответить:</h3>
+            <form class="form-answer" method="POST">
+            {% csrf_token %}
+            {% for input in form.visible_fields %}
+               <div class="form-group {% if input.errors %} has-danger {% endif %}">
+                  {{input}}
+                  {% for error in input.errors %}
+                     <div class="form-control-feedback">{{ error }}</div>
+                  {% endfor %}
+               </div>
+            {% endfor %}
+               <button type="submit" class="btn btn-black">Ответить</button>
+            </form>
+            {% endif %}
+
+{% include "js/actions.html" %}
+
+{% endblock %}

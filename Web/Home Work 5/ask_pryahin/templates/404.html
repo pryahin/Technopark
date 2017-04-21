@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+   <head>
+      <title>404 error</title>
+      <link href="{% static '404/css/style.css' %}" rel="stylesheet" type="text/css"  media="all" />
+   </head>
+   <body>
+      <div class="header">
+         <div class="logo">
+            <h1><a href="/">Упс</a></h1>
+         </div>
+      </div>
+      <div class="content">
+         <img src="{% static '404/images/error-img.png' %}" title="error" />
+         <p><span><label>У</label>пс.....</span>Такой страницы не существует.</p>
+         <a href="/">На главную</a>
+         <div class="copy-right">
+            <p>© Company 2017</p>
+         </div>
+      </div>
+      </div>
+   </body>
+</html>

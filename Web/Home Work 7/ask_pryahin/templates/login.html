@@ -1,0 +1,29 @@
+{% extends "base.html"%}
+
+{% block title %} Вход {% endblock %}
+
+{% block content %}
+            <h3 class="bot">Вход</h3>
+            <form class="login-form" method="POST" >
+               {% csrf_token %}
+               {% for error in form.non_field_errors %}
+               <div class="alert alert-danger" role="alert"><strong>Ошибка!</strong> {{ error }}</div>
+               {% endfor %}
+               {% for input in form.visible_fields %}
+               <div class="form-group row">
+                  <label for="{{ input.name }}" class="col-2 col-form-label">{{ input.label }}</label>
+                  <div class="col-10">
+                     <!--<input class="form-control" type="text" id="login-input">-->
+                     {{ input }}
+                  </div>
+               </div>
+               {% endfor %}
+               <div class="form-group row">
+                  <div class="col-2"></div>
+                  <div class="col-10">
+                     <button type="submit" class="btn btn-black">Войти</button>
+                  </div>
+               </div>
+            </form>
+            <a href="{% url 'signup' %}">Нет аккаунта? Регистрация</a>
+{% endblock %}

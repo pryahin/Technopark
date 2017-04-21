@@ -24,4 +24,3 @@ def getpost(request):
                 else:
                     response += "%s = %s <br>" % (key, value)
     return HttpResponse(response, content_type="text/html", status=200)
-

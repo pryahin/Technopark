@@ -1,0 +1,44 @@
+{% load static %}
+<script type="text/javascript" src="{% static 'js/jquery-3.2.0.min.js' %}"></script>
+
+<script type="text/javascript">
+   $('.likebutton').click(function(){
+    $.ajax({
+        url: "/question/like/"+$(this).attr('qid'),
+        type: "POST",
+        data: {'qid': $(this).attr('qid'), 'value' : $(this).attr('value'), 'csrfmiddlewaretoken': '{{ csrf_token }}'},
+        success: function(response) {
+         $(response.ratingid).text(response.rating)
+         $('#btndislike'+response.qid).html(response.content.dislike)
+         $('#btnlike'+response.qid).html(response.content.like)
+            }
+        });
+  });
+
+  $('.anslikebutton').click(function(){
+    $.ajax({
+        url: "/answer/like/"+$(this).attr('aid'),
+        type: "POST",
+        data: {'aid': $(this).attr('aid'), 'value' : $(this).attr('value'), 'csrfmiddlewaretoken': '{{ csrf_token }}'},
+        success: function(response) {
+         $(response.ratingid).text(response.rating)
+         $('#ansbtndislike'+response.aid).html(response.content.dislike)
+         $('#ansbtnlike'+response.aid).html(response.content.like)
+            }
+        });
+  }); 
+
+  $('.answer-vote').click(function(){
+    $.ajax({
+        url: "/answer/vote/"+$(this).attr('aid'),
+        type: "POST",
+        data: {'aid': $(this).attr('aid'), 'csrfmiddlewaretoken': '{{ csrf_token }}'},
+        success: function(response) {
+        		if (response.result == 'true'){
+        			$('.answer-vote').remove()
+        			$('#ansid'+response.aid).html(response.content.new)
+        		}
+            }
+        });
+  }); 
+</script>

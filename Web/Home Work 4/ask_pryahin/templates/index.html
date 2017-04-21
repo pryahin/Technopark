@@ -1,0 +1,34 @@
+{% extends "base.html"%}
+
+{% block title %} Главная страница {% endblock %}
+
+{% block content %}
+{% load static %}
+
+<h3>Новые вопросы:</h3>
+{% for question in questions %}
+            <div class="question">
+               <div class="question-avatar">
+                  <img src="{{ question.author.profile.avatar.url }}" class="rounded-circle question-avatar-img">
+               </div>
+               <div class="question-like">
+                  <a href="#"><img src="{% static 'img/black-dislike.png' %}" class="like-img"></a>
+                  {{ question.rating }} 
+                  <a href="#"><img src="{% static 'img/like-black.png' %}" class="like-img"></a></div>
+               <div class="question-title bot">
+                  <a href="{% url 'question' question.id %}">{{ question.title }}</a>   
+               </div>
+               <div class="question-preview">{{ question.text }}</div>
+               <div class="question-answers"><a href="{% url 'question' question.id %}">Ответов: {{ question.count_answers }}</a></div>
+               <div class="question-tags">Теги: 
+               {% for tag in question.tags.all %}
+                  <a href="{% url 'questions_by_tag' tag %}"> {{ tag }} </a>
+               {% endfor %}
+               </div>
+               <div class="clearfix"></div>
+            </div>
+{% endfor %}
+
+{% include "paginator.html" %}
+
+{% endblock %}

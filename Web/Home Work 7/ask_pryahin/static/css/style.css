@@ -1,0 +1,344 @@
+a{
+	color: grey;
+}
+
+a:hover{
+	color: black;
+}
+
+button{
+	cursor: pointer
+}
+
+
+.header {
+	background: #353535;
+	width: 100%;
+	height: 60px;
+	min-width: 990px;
+}
+
+.header-content{
+	min-width: 990px;
+	width: 70%;
+	margin: auto;
+}
+
+.logo{
+	display: inline-block;
+	vertical-align: middle;
+	/*margin-left: 15%; /* 145px */
+	margin-top: 10px;
+	color: White;
+}
+
+.logo a{
+	color: White;
+	text-decoration: none;
+}
+
+.logo-img{
+	width: 40px;
+	height: 40px;
+}
+
+.logo-title{
+	margin-top: -45px;
+	margin-left: 40px;
+}
+
+.search{
+	margin-left: 250px; /* 365px */
+	margin-top: -45px;
+}
+
+.user{
+	margin-left: calc(100% - 250px);/*75%; /* 700px */
+	margin-top: -38px;
+}
+
+.header-avatar{
+	width: 50px;
+	height: 50px;
+	margin-top: -8px;
+}
+
+.user-block{
+	margin-top: -50px;
+	margin-left: 60px;
+}
+
+.user-name{
+	color: White;
+	font-style: italic;
+	font-weight: bold;
+
+}
+
+.user-options a{
+	color: white;
+}
+
+.bot{
+	border-bottom: 1px solid #e5e5e5
+}
+
+.content, .footer{
+	min-width: 990px;
+	width: 70%;
+	margin: auto;
+	margin-top: 20px;
+}
+
+.left{
+	width: 65%;
+	margin-left: 20px;
+	float: left;
+}
+
+.right{
+	width: 30%;
+	margin-left: auto;
+	float: right;
+}
+
+.best-members{
+	margin-top: 30px;
+}
+
+.footer {
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+}
+
+.question{
+	padding: 10px;
+	padding-left: 0px;
+	width: 100%;
+	border: 1px solid #000;
+	min-height: 125px;
+}
+
+.question-avatar{
+	height: 70px;
+	width: 70px;
+	margin: 10px 15px 0px 20px;
+}
+
+.question-avatar-img{
+	height: 100%;
+	width: 100%;
+}
+
+.question-like{
+	width: 110px;
+	margin-left: 0px;
+	text-align: center;
+}
+
+.like-img{
+	width: 20px;
+	height: 20px;
+}
+
+.question{
+	margin-bottom: 10px;
+}
+
+.question-title{
+	font-size: 15pt;
+	margin-top: -110px;
+	margin-left: 110px;
+	float: left;
+}
+
+.question-title a{
+	text-decoration: none;
+}
+
+.question-preview{
+	font-size: 10pt;
+	margin-left: 110px;
+	margin-top: -70px;
+}
+
+.question-answers{
+	margin-top: 10px;
+	margin-left: 110px;
+}
+
+.question-tags{
+	margin-left: 200px;
+	margin-top: -24px;
+}
+
+.page-question-avatar{
+	height: 100px;
+	width: 100px;
+	margin-left: 10px;
+	float: left;
+}
+
+.page-question-like{
+	width: 120px;
+	margin-top: 110px;
+	margin-left: -110px;
+	float: left;
+	text-align: center;
+}
+
+.page-like-img{
+	width: 20px;
+	height: 20px;
+}
+
+
+.page-question-title{
+	text-align: center;
+	font-size: 15pt;
+	font-weight: bold;
+	width: calc(100% - 130px);
+	margin-left: 120px;
+}
+
+.page-question-preview{
+	width: calc(100% - 130px);
+	margin-left: 120px;
+}
+
+.page-question-tags{
+	margin: 10px 0px 10px 120px; 
+}
+
+.answer{
+	min-height: 115px;
+	width: 100%;
+	border: 1px solid #000;
+	margin-bottom: 15px;
+	margin-top: 15px;
+}
+
+.answer-avatar{
+	height: 70px;
+	width: 70px;
+	margin: 10px 15px 0px 20px;
+}
+
+.answer-avatar-img{
+	height: 100%;
+	width: 100%;
+}
+
+.answer-like{
+	width: 110px;
+	height: 30px;
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+.answer-preview{
+	font-size: 10pt;
+	margin-left: 110px;
+	margin-top: -110px;
+}
+
+.answer-correct:before{
+	display: inline-block;
+    width: 18px;
+    height: 18px;
+    content: "";
+    background: url("../img/correct-green.png") no-repeat 0 0;
+    background-size: 100%;
+    background-position: bottom;
+}
+
+.answer-correct{
+	font-weight: bold;
+	color: green;
+	margin: 15px 0 10px 110px;
+}
+
+.answer-vote{
+	font-weight: bold;
+	color: green;
+	margin: 15px 0 10px 110px;
+}
+
+.form-answer textarea{
+	margin: 10px 0px;
+}
+
+.aks-form, .login-form, .settings-form{
+	margin-top: 20px;
+}
+
+.settings-img{
+	width: 100px;
+	height: 100px;
+	margin-bottom: 10px;
+}
+
+/*меняем цвет некоторы эл-тов bootstrap*/
+.page-link{
+	color: #000;
+}
+
+.page-item.active .page-link{
+	color: #fff;
+	background-color: #000;
+	border-color:#000;
+}
+
+.btn-black {
+	background-color:#000000;
+	color: white;
+}
+.btn-black:hover {
+	background-color: #353535;
+	text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+	color: white;
+}
+.btn-black:focus {
+    -webkit-box-shadow: 0 0 0 2px rgba(48, 48, 48, .5);
+    box-shadow: 0 0 0 2px rgba(48, 48, 48, .5)
+}
+
+.custom-file-control{
+	cursor: pointer;
+}
+
+.custom-file-control:after {
+  content: attr(value);
+}
+
+.custom-file-control:before {
+  content: "Загрузить";
+}
+
+/*Кнопки лайков */
+.likebutton{
+	cursor: pointer;
+}
+.anslikebutton{
+	cursor: pointer;
+}
+.likebtn{
+	vertical-align: bottom;
+	content: url("../img/like.png");
+}
+.islikebtn{
+	vertical-align: bottom;
+	content: url("../img/is_liked.png")
+}
+.dislikebtn{
+	vertical-align: bottom;
+	content: url("../img/dislike.png")
+}
+.isdislikebtn{
+	vertical-align: bottom;
+	content: url("../img/is_disliked.png")
+}
+.ansRating{
+	margin: 4px;
+}

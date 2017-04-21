@@ -1,0 +1,37 @@
+{% extends "base.html"%}
+
+{% block title %} Вопросы по тегу: {{ tag }} {% endblock %}
+
+{% block content %}
+{% load static %}
+
+<h3>Вопросы по тегу {{ tag }}:</h3>
+{% for question in questions %}
+            <div class="question">
+               <div class="question-avatar">
+                  <a href="/user/{{question.author.username}}"><img src="{{ question.author.profile.avatar.url }}" class="rounded-circle question-avatar-img"></a>
+               </div>
+               <div class="question-like">
+                  <a class="likebutton" value="-1" qid="{{ question.id }}" id="btndislike{{ question.id }}"><span class="like-img {% if question.id in dislikes %}is{% endif %}dislikebtn"/></a>
+                  <span id="qRating{{ question.id }}">{{ question.rating }}</span> 
+                  <a class="likebutton" value="1" qid="{{ question.id }}" id="btnlike{{ question.id }}"><span class="like-img {% if question.id in likes %}is{% endif %}likebtn"></a>
+               </div>
+               <div class="question-title bot">
+                  <a href="{% url 'question' question.id %}">{{ question.title }}</a>   
+               </div>
+               <div class="question-preview">{{ question.text }}</div>
+               <div class="question-answers"><a href="{% url 'question' question.id %}">Ответов: {{ question.count_answers }}</a></div>
+               <div class="question-tags">Теги: 
+               {% for tag in question.tags.all %}
+                  <a href="{% url 'questions_by_tag' tag %}"> {{ tag }} </a>
+               {% endfor %}
+               </div>
+               <div class="clearfix"></div>
+            </div>
+{% endfor %}
+
+{% include "js/actions.html" %}
+
+{% include "paginator.html" %}
+
+{% endblock %}

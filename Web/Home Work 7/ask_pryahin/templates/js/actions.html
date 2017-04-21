@@ -1,0 +1,106 @@
+{% load static %}
+<script type="text/javascript" src="{% static 'js/jquery-3.2.0.min.js' %}"></script>
+
+<script type="text/javascript">
+
+$('.likebutton').on("click", function() {
+    $.ajax({
+        url: "/question/like/" + $(this).attr('qid'),
+        type: "POST",
+        data: {
+            'qid': $(this).attr('qid'),
+            'value': $(this).attr('value'),
+            'csrfmiddlewaretoken': '{{ csrf_token }}'
+        },
+        success: function(response) {
+            $(response.ratingid).text(response.rating)
+            $('#btndislike' + response.qid).html(response.content.dislike)
+            $('#btnlike' + response.qid).html(response.content.like)
+        }
+    });
+});
+
+$('#answers').on('click', '.anslikebutton', function() {
+    $.ajax({
+        url: "/answer/like/" + $(this).attr('aid'),
+        type: "POST",
+        data: {
+            'aid': $(this).attr('aid'),
+            'value': $(this).attr('value'),
+            'csrfmiddlewaretoken': '{{ csrf_token }}'
+        },
+        success: function(response) {
+            $(response.ratingid).text(response.rating)
+            $('#ansbtndislike' + response.aid).html(response.content.dislike)
+            $('#ansbtnlike' + response.aid).html(response.content.like)
+        }
+    });
+});
+
+$('#answers').on('click', '.answer-vote', function() {
+    $.ajax({
+        url: "/answer/vote/" + $(this).attr('aid'),
+        type: "POST",
+        data: {
+            'aid': $(this).attr('aid'),
+            'csrfmiddlewaretoken': '{{ csrf_token }}'
+        },
+        success: function(response) {
+            if (response.result == 'true') {
+                $('.answer-vote').remove()
+                $('#ansid' + response.aid).html(response.content.new)
+            }
+        }
+    });
+});
+
+var addAnswer = function(id, username, avatar, text, isVote, qAuthor, countAnswers) {
+    var userid = {% if request.user.id == None %}0{% else %}{{ request.user.id }}{% endif %};
+    var answers = $('#answers');
+    var answer = '';
+    if (countAnswers == 0)
+      answer += '<h3 class="bot">Ответы:</h3>';
+    answer += '<div class="answer">';
+    answer += '<a name="comment' + id + '"></a>';
+    answer += '<div class="answer-avatar">';
+    answer += '<a href="/user/' + username + '"><img src="' + avatar + '" class="rounded-circle answer-avatar-img"></a></div>';
+    answer += '<div class="answer-like">'
+    answer += '<a class="anslikebutton" value="-1" aid="' + id + '" id="ansbtndislike' + id + '"><span class="like-img dislikebtn"/></a>';
+    answer += '<span id="aRating' + id + '" style="margin: 4px;">0</span>';
+    answer += '<a class="anslikebutton" value="1" aid="' + id + '" id="ansbtnlike' + id + '"><span class="like-img likebtn"/></a></div>';
+    answer += '<div class="answer-preview">' + text + '</div>';
+    if (isVote && (userid == qAuthor))
+        answer += '<div id="ansid' + id + '"><button type="button" aid="' + id + '" class="btn btn-outline-success answer-vote">✓ Это лучший ответ</button></div>';
+
+    answer += '</div>';
+    // alert(answer);
+    answers.append(answer);
+}
+
+Comet = {
+    run: function(channel) {
+        var that = this;
+        var self = function() {
+            return that.run(channel);
+        };
+
+        $.ajax({
+            type: 'GET',
+            url: '/comet-listen/' + channel,
+            success: function(data) {
+                if (data != undefined) {
+                    addAnswer(data.id, data.username, data.avatar, data.text, data.isVote, data.qAuthor, data.countAnswers);   
+                }
+                self();
+            },
+            error: function() {
+                setTimeout(self, 10000);
+            }
+        });
+    }
+}
+
+$(document).ready(function() {
+    Comet.run('{{ question.id }}');
+});
+</script>
