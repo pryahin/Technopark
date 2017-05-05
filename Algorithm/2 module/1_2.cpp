@@ -29,9 +29,9 @@ void mySort(point* array, size_t length, std::function<bool(point,point)> Compar
 		lastIndex = i-1;
 		while (lastIndex >= 0 && Compare(array[lastIndex],temp))
 		{
-			array[lastIndex+1] = array[lastIndex];
-			array[lastIndex--] = temp;
+			array[lastIndex+1] = array[lastIndex--];
 		}
+		array[lastIndex+1] = temp;
 	}
 }
 
@@ -50,6 +50,6 @@ int main()
 	for (size_t i=0;i<n;i++)
 		std::cout << array[i].x << " " << array[i].y << std::endl;
 
-
+	delete[] array;
 	return 0;
 }

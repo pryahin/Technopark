@@ -22,9 +22,9 @@
 #define MAX_COUNT 25000000
 
 //Рандомный пивот
-int findPivot(int* target, int begin, int end) {
+size_t findPivot(int* target, size_t begin, size_t end) {
     begin = rand() % (end - begin + 1) + begin;
-    int middle = rand() % (end - begin + 1) + begin;
+    size_t middle = rand() % (end - begin + 1) + begin;
     end = rand() % (end - begin + 1) + begin;
     
     if (target[middle] < target[begin]) {
@@ -40,14 +40,13 @@ int findPivot(int* target, int begin, int end) {
     return end;
 }
 
-size_t partition(int* target, int begin, int end) {
+size_t partition(int* target, size_t begin, size_t end) {
     //Случайный опорный элемент
-    int pivotIndex = findPivot(target, begin, end);
+    size_t pivotIndex = findPivot(target, begin, end);
     std::swap(target[begin], target[pivotIndex]);
     
     //итераторы
-    int it = begin + 1;
-    int jt = end;
+    size_t it = begin + 1, jt = end;
     
     // Hoare partition
     while (true) {
@@ -68,10 +67,9 @@ size_t partition(int* target, int begin, int end) {
     }
 }
 
-void insertionSort(int* target, int begin, int end) {
+void insertionSort(int* target, size_t begin, size_t end) {
     for (size_t i = begin + 1; i < end; i++) {
-        size_t left = 0;
-        size_t right = i;
+        size_t left = 0, right = i;
         if (target[i] < target[i - 1]) {
             while (left < right) {
                 size_t middle = left + (right - left) / 2;
@@ -83,8 +81,7 @@ void insertionSort(int* target, int begin, int end) {
             }
             if (right < i - 1) {
                 int temp = target[i];
-                std::memmove(&target[right + 1], &target[right],
-                             (i - right) * sizeof(int));
+                std::memmove(&target[right + 1], &target[right], (i - right) * sizeof(int));
                 target[right] = temp;
             } else {
                 std::swap(target[i], target[i - 1]);
@@ -93,7 +90,7 @@ void insertionSort(int* target, int begin, int end) {
     }
 }
 
-void qsort(int* target, int begin, int end) {
+void qsort(int* target, size_t begin, size_t end) {
     //Стек пар begin, end
     std::stack<std::pair<int, int> > stack;
     stack.push(std::make_pair(begin, end));
@@ -127,9 +124,10 @@ int main() {
     srand(time(NULL));
     qsort(array, 0, count - 1);
     
-    for (int i = 9; i < count; i += 10) {
+    for (size_t i = 9; i < count; i += 10) {
         printf("%d ", array[i]);
     }
     
+    delete[] array;
     return 0;
 }

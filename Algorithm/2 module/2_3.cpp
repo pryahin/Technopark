@@ -12,6 +12,7 @@
  */
 
 #include <iostream>
+#include <cassert>
 
 class Heap {
  private:
@@ -31,9 +32,12 @@ class Heap {
   int ExtractMin();
   void add(int element);
 
-  inline bool IsEmpty() { return size == 0; }
-  inline int GetSize() { return size; }
-  inline int PeekAtNext() { return IsEmpty() ? 0 : buffer[0]; }
+  inline bool IsEmpty() const { return size == 0; }
+  inline int GetSize() const { return size; }
+  inline int PeekAtNext() const { 
+    assert(!IsEmpty());
+    return buffer[0]; 
+  }
 };
 
 Heap::Heap(int cap) {
@@ -92,7 +96,8 @@ void Heap::add(int element) {
 }
 
 int Heap::ExtractMin() {
-  if (IsEmpty()) return 0;
+  if (IsEmpty()) 
+    return 0;
 
   int result = buffer[0];
 
@@ -114,7 +119,9 @@ int GetMinCount(int n) {
 
     if (!heap.IsEmpty()) {
       // Если некоторые электрички к моменту прибытия уехали - извлекаем
-      while (arrival > heap.PeekAtNext()) heap.ExtractMin();
+      while (arrival > heap.PeekAtNext() && !heap.IsEmpty()) {
+        heap.ExtractMin();
+      }
     }
 
     // Добавляем время отправления прибывшей
